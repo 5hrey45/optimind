@@ -16,11 +16,18 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            alert('Email sent successfully!');
-        } else {
+    .then(response => response.text()) // Use text() to get raw response
+    .then(text => {
+        console.log('Response Text:', text); // Log the raw response text
+        try {
+            const result = JSON.parse(text); // Manually parse JSON
+            if (result.success) {
+                alert('Email sent successfully!');
+            } else {
+                alert('Error sending email.');
+            }
+        } catch (e) {
+            console.error('Error parsing JSON:', e);
             alert('Error sending email.');
         }
     })
@@ -28,4 +35,4 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         console.error('Error:', error);
         alert('Error sending email.');
     });
-});
+})
