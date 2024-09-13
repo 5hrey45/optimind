@@ -87,7 +87,7 @@
           >contact@optimind.com</a
         >
       </p>
-      <form id="contact-form" onsubmit="sendEmail(); reset(); return false;">
+      <form id="contact-form" action="https://formsubmit.co/shreyasnarve1611@gmail.com" method="POST">
         <input
           type="text"
           id="name"
@@ -116,6 +116,7 @@
           placeholder="Your Message"
           required
         ></textarea>
+        <input type="hidden" name="_captcha" value="false">
         <button type="submit">Send Message</button>
       </form>
     </section>
@@ -125,35 +126,6 @@
       <p>&copy; 2024 Optimind. All rights reserved.</p>
     </footer>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-
-    <script>
-      async function sendEmail() {
-        // Collect form data
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const phone = document.getElementById("phone").value;
-        const message = document.getElementById("message").value;
-
-        // Send the form data to the serverless function
-        const response = await fetch("/api/sendEmail", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            from: email, // Use email field from the form
-            subject: `New contact form enquiry from ${name}`, // Include name in subject
-            body: `Message from ${name} (${phone}):\n\n${message}`, // Include additional form data in the body
-          }),
-        });
-
-        const result = await response.json();
-        alert(result.message || result.error);
-
-        // Reset form after submission
-        document.getElementById("contact-form").reset();
-      }
-    </script>
+  
   </body>
 </html>
