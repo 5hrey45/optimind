@@ -1,84 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Optimind - Tech Solutions</title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <!-- Navigation -->
     <header>
-        <nav>
-            <div class="logo">Optimind</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="logo">Optimind</div>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Innovative Tech Solutions for a Smarter Future</h1>
-            <p>Empowering businesses with cutting-edge technology and innovative solutions to thrive in the digital age.</p>
-            <a href="#services" class="cta-btn">Explore Our Services</a>
-        </div>
+      <div class="hero-content">
+        <h1>Innovative Tech Solutions for a Smarter Future</h1>
+        <p>
+          Empowering businesses with cutting-edge technology and innovative
+          solutions to thrive in the digital age.
+        </p>
+        <a href="#services" class="cta-btn">Explore Our Services</a>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-container">
-            <div class="service">
-                <h3>Custom Software Development</h3>
-                <p>Tailored solutions designed to meet your unique business requirements with precision.</p>
-            </div>
-            <div class="service">
-                <h3>Cloud Solutions</h3>
-                <p>Leverage the power of the cloud to scale your business and improve operational efficiency.</p>
-            </div>
-            <div class="service">
-                <h3>Data Analytics</h3>
-                <p>Turn raw data into actionable insights that drive better decision-making.</p>
-            </div>
+      <h2>Our Services</h2>
+      <div class="service-container">
+        <div class="service">
+          <h3>Custom Software Development</h3>
+          <p>
+            Tailored solutions designed to meet your unique business
+            requirements with precision.
+          </p>
         </div>
+        <div class="service">
+          <h3>Cloud Solutions</h3>
+          <p>
+            Leverage the power of the cloud to scale your business and improve
+            operational efficiency.
+          </p>
+        </div>
+        <div class="service">
+          <h3>Data Analytics</h3>
+          <p>
+            Turn raw data into actionable insights that drive better
+            decision-making.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- About Us Section -->
     <section id="about" class="about">
-        <h2>About Optimind</h2>
-        <p>At Optimind, we believe in harnessing the power of technology to transform businesses. With a focus on innovation and customer satisfaction, we deliver top-tier tech solutions designed to help our clients succeed in a rapidly evolving digital landscape.</p>
-        <p>If you have any questions, feel free to reach out to us directly at: 
-            <a href="mailto:info@optimind.com" class="email-link">info@optimind.com</a>
-        </p>
+      <h2>About Optimind</h2>
+      <p>
+        At Optimind, we believe in harnessing the power of technology to
+        transform businesses. With a focus on innovation and customer
+        satisfaction, we deliver top-tier tech solutions designed to help our
+        clients succeed in a rapidly evolving digital landscape.
+      </p>
+      <p>
+        If you have any questions, feel free to reach out to us directly at:
+        <a href="mailto:info@optimind.com" class="email-link"
+          >info@optimind.com</a
+        >
+      </p>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <p>Prefer emailing us directly? Reach out at: 
-        <a href="mailto:contact@optimind.com" class="email-link">contact@optimind.com</a>
-        </p>
-        <form id="contact-form">
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
-            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+      <h2>Contact Us</h2>
+      <p>
+        Prefer emailing us directly? Reach out at:
+        <a href="mailto:contact@optimind.com" class="email-link"
+          >contact@optimind.com</a
+        >
+      </p>
+      <form id="contact-form" onsubmit="sendEmail(); reset(); return false;">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Your Phone Number"
+          required
+        />
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Your Message"
+          required
+        ></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </section>
-
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Optimind. All rights reserved.</p>
+      <p>&copy; 2024 Optimind. All rights reserved.</p>
     </footer>
 
-    <script src="/scripts.js"></script>
-</body>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+      async function sendEmail() {
+        // Collect form data
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const message = document.getElementById("message").value;
+
+        // Send the form data to the serverless function
+        const response = await fetch("/api/sendEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: email, // Use email field from the form
+            subject: `New contact form enquiry from ${name}`, // Include name in subject
+            body: `Message from ${name} (${phone}):\n\n${message}`, // Include additional form data in the body
+          }),
+        });
+
+        const result = await response.json();
+        alert(result.message || result.error);
+
+        // Reset form after submission
+        document.getElementById("contact-form").reset();
+      }
+    </script>
+  </body>
 </html>

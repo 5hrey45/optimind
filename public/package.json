@@ -1,15 +1,12 @@
 {
-    "name": "optimind-tech-solutions",
+    "name": "your-project-name",
     "version": "1.0.0",
-    "description": "Backend for Optimind Tech Solutions",
-    "main": "/server.js",
+    "main": "index.js",
     "scripts": {
-      "start": "node /server.js"
+      "start": "node index.js"
     },
     "dependencies": {
-      "express": "^4.18.2",
-      "nodemailer": "^6.9.0",
-      "dotenv": "^16.0.3"
+      "crypto-js": "^4.1.1"
     }
   }
   
